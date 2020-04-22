@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import Header from '../Components/Header'
+import InputForm from '../Components/InputForm'
+import ResultsDisplay from '../Components/ResultsDisplay'
+
+
 
 class MortgageContainer extends Component {
   constructor(props) {
@@ -15,9 +20,11 @@ class MortgageContainer extends Component {
   
   render() {
     return (
-      <>
-        <h1>Hello World</h1>
-      </>
+      <div>
+        < Header />
+        < InputForm />
+        < ResultsDisplay />
+      </div>     
     )
   }
 }
