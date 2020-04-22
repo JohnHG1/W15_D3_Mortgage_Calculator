@@ -21,7 +21,7 @@ class MortgageContainer extends Component {
   render() {
     return (
       <div>
-        < Header />
+        < Header title={this.state.title}/>
         < InputForm />
         < ResultsDisplay />
       </div>     
