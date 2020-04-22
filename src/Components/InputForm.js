@@ -42,7 +42,8 @@ class InputForm extends Component {
     render() {
     return (
       <>
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="input-form-one">
+        <div className="inputs">
           <div className="input-userSalary">
               <label>User Salary:
                <input type="number" name="userSalary" id="userSalary" min="0" onChange={this.handleInputChange}/>
@@ -59,6 +60,7 @@ class InputForm extends Component {
               <label>Deposit:
               <input type="number" name="deposit" min="0" id="deposit" onChange={this.handleInputChange}/>
               </label>
+          </div>
           </div>
 
           <div className="button-wrapper">
