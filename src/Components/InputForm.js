@@ -9,29 +9,56 @@ class InputForm extends Component {
           userSalary: 0,
           partnerSalary: 0,
           deposit: 0
-      }
+      };
+      this.handleInputChange = this.handleInputChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleInputChange(event){
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
+
+    handleSubmit(event){
+        event.preventDefault();
+        const userSalary = parseInt(this.state.userSalary);
+        const partnerSalary = parseInt(this.state.partnerSalary);
+        const deposit = parseInt(this.state.deposit);
+
+        if(!userSalary || !partnerSalary || !deposit) return <p>Please input details</p>;
+        this.props.onInputSubmit({
+          userSalary: userSalary,
+          partnerSalary: partnerSalary,
+          deposit: deposit
+        })
+        this.setState({
+          userSalary: 0,
+          partnerSalary: 0,
+          deposit: 0
+        })
     }
 
 
-    
-  
     render() {
     return (
       <>
       <form onSubmit={this.handleSubmit}>
           <div className="input-userSalary">
-              <label for="usersalary">User Salary:     </label>
-              <input type="number" name="usersalary" min="0" />
+              <label>User Salary:
+               <input type="number" name="userSalary" id="userSalary" min="0" onChange={this.handleInputChange}/>
+              </label>
           </div>
 
           <div className="input-partnerSalary">
-              <label for="partenrsalary">Partner Salary:     </label>
-              <input type="number" name="partnersalary" min="0" />
+              <label>Partner Salary:
+               <input type="number" name="partnerSalary" id="partnerSalary" min="0" onChange={this.handleInputChange}/>
+              </label>
           </div>
 
           <div className="input-deposit">
-              <label for="deposit">Deposit:     </label>
-              <input type="number" name="Deposit" min="0" />
+              <label>Deposit:
+              <input type="number" name="deposit" min="0" id="deposit" onChange={this.handleInputChange}/>
+              </label>
           </div>
 
           <div className="button-wrapper">

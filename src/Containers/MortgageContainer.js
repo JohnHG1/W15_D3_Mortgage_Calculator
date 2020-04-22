@@ -16,14 +16,35 @@ class MortgageContainer extends Component {
       maxValue: 0,
       title: "Mortgage Calculator"
     }
+    this.handleInputSubmit = this.handleInputSubmit.bind(this);
+    this.calculateMaxValue = this.calculateMaxValue.bind(this);
   }
+
+  handleInputSubmit(inputData){
+    this.setState({
+      userSalary: inputData.userSalary,
+      partnerSalary: inputData.partnerSalary,
+      deposit: inputData.deposit,
+      maxValue: (((inputData.userSalary + inputData.partnerSalary) * 3) + inputData.deposit)
+    })
+
+  }
+
+  calculateMaxValue(){
+    console.log("CalculateMaxValue called")
+    const maxValue = ((this.state.userSalary + this.state.partnerSalary) * 3) + this.state.deposit
+    console.log("maxValue", maxValue);
+    
+    this.setState({maxValue: maxValue})
+  }
+
   
   render() {
     return (
       <div>
         < Header title={this.state.title}/>
-        < InputForm />
-        < ResultsDisplay />
+        < InputForm onInputSubmit={this.handleInputSubmit}/>
+        < ResultsDisplay maxValue={this.state.maxValue}/>
       </div>     
     )
   }
